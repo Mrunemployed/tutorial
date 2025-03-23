@@ -210,7 +210,7 @@ VALUES ('Brian Thompson', '1234 5678 9012 3456', '12/24', '981', '$200', 'Tech G
 ```
 
 **Note:** Ensure the table `transactions` and its columns (`Cardholder_Name`, `Card_Number`, `Expiry_Date`, `CVV`, `Transaction_Amount`, `Merchant_Name`) exist in your database with the appropriate data types. If `Transaction_Amount` is stored as a numeric value without the `$` symbol, you should adjust the value accordingly.
-```
+
 
 ---
 
@@ -612,6 +612,6 @@ Retrieves detailed compliance reports for provided data elements and PII. The re
 
 ## Revision History
 
-- **Version 1.0** – Initial documentation based on the provided markdown.
+- **Version 1.0** – Initial documentation - Rudradip Khan
 
 ---
