@@ -1,7 +1,3 @@
-Below is the complete API documentation created from the provided markdown. It has been organized into sections for each endpoint, clearly detailing the purpose, request/response details, headers, sample payloads, and responses.
-
----
-
 # API Documentation
 
 This document details the endpoints provided by the Zerotrusted agents service. The APIs cover tasks such as anonymizing prompts, interacting with large language models (LLMs), retrieving LLM reports, obtaining reliability scores, and fetching compliance reports. All sensitive header values (such as authorization tokens) and some methods are redacted.
