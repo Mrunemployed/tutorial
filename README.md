@@ -1,45 +1,88 @@
-## Get Anonymize Prompt: `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-anonymize-prompt`
+Below is the complete API documentation created from the provided markdown. It has been organized into sections for each endpoint, clearly detailing the purpose, request/response details, headers, sample payloads, and responses.
 
-**Purpose:** API call to get an anonymization prompt.
+---
 
-**Request Details:**
+# API Documentation
 
-*   **URL:** `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-anonymize-prompt`
-*   **Method:** `<redacted>` (POST).
-*   **Content-Type:** `multipart/form-data` (Request), `application/json` (Response).
+This document details the endpoints provided by the Zerotrusted agents service. The APIs cover tasks such as anonymizing prompts, interacting with large language models (LLMs), retrieving LLM reports, obtaining reliability scores, and fetching compliance reports. All sensitive header values (such as authorization tokens) and some methods are redacted.
 
+---
 
-**Response Details:**
+## Table of Contents
 
-*   **Status Code:** `200 OK`.
-*   **Response Headers:**
-    *   `access-control-allow-credentials: true`: The server allows credentials in cross-origin requests.
-    *   `access-control-allow-origin: https://demo.zerotrusted.ai`: The server permits cross-origin requests from `demo.zerotrusted.ai`.
-    *   `content-length: <redacted>`: The length of the response body.
-    *   `content-type: application/json`: The response is in JSON format.
-    *   `date: Fri, 21 Mar 2025 19:04:09 GMT`: The date and time of the response.
-    *   `referrer-policy: <redacted>`: The referrer policy used by the server.
-    *   `server: zta`: The server software is identified as "zta."
-    *   `strict-transport-security: max-age=31536000; includeSubDomains; preload`: Enforces HTTPS for a year, including subdomains.
-    *   `vary: Origin`: The response may vary based on the `Origin` header.
-    *   `x-content-type-options: nosniff`: Instructs the browser not to perform MIME-sniffing.
+1. [Get Anonymize Prompt](#get-anonymize-prompt)
+2. [Get LLM Response](#get-llm-response)
+3. [LLM Report (V2)](#llm-report-v2)
+4. [Get Reliability Scores](#get-reliability-scores)
+5. [Get Compliance Reports V2](#get-compliance-reports-v2)
 
-## API Request Summary:
+---
 
-| Field           | Value                                                                      |
-| --------------- | -------------------------------------------------------------------------- |
-| **URL**         | `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-anonymize-prompt`    |
-| **Method**      | `<redacted>` (POST)                                            |
-| **Request Content-Type** | `multipart/form-data; boundary=----WebKitFormBoundaryIfFsBFmd4wKwZg49` |
-| **Response Content-Type**| `application/json` |
-| **Authorization** | `<redacted>` (Present)                                                |
-| **Origin**      | `https://demo.zerotrusted.ai`                                             |
-| **Payload**     | `multipart/form-data`      |
-| **Response**    | `200 OK` (Successful, JSON data returned)                                   |
+## 1. Get Anonymize Prompt
 
+**Endpoint:**  
+`https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-anonymize-prompt`
 
-## Sample Payload:
-`pii_entities: first name, last name, ssn (social security number), credit card number, cvv, bank account number, email, phone number, driving license number, passport number, address
+**Purpose:**  
+API call to retrieve an anonymization prompt along with related details for masking personally identifiable information (PII).
+
+### Request Details
+
+- **URL:**  
+  `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-anonymize-prompt`
+  
+- **Method:**  
+  `<redacted>` (POST)
+  
+- **Request Content-Type:**  
+  `multipart/form-data` (with boundary information provided in the actual request)
+
+- **Response Content-Type:**  
+  `application/json`
+
+- **Authorization:**  
+  Present (redacted)
+
+- **Origin:**  
+  `https://demo.zerotrusted.ai`
+
+- **Payload Format:**  
+  The request payload is submitted as `multipart/form-data`.
+
+### Response Details
+
+- **Status Code:**  
+  `200 OK`
+  
+- **Response Headers:**  
+  - `access-control-allow-credentials: true`
+  - `access-control-allow-origin: https://demo.zerotrusted.ai`
+  - `content-length: <redacted>`
+  - `content-type: application/json`
+  - `date: Fri, 21 Mar 2025 19:04:09 GMT`
+  - `referrer-policy: <redacted>`
+  - `server: zta`
+  - `strict-transport-security: max-age=31536000; includeSubDomains; preload`
+  - `vary: Origin`
+  - `x-content-type-options: nosniff`
+
+### API Request Summary
+
+| Field                      | Value                                                                                         |
+| -------------------------- | --------------------------------------------------------------------------------------------- |
+| **URL**                    | `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-anonymize-prompt`                           |
+| **Method**                 | `<redacted>` (POST)                                                                           |
+| **Request Content-Type**   | `multipart/form-data; boundary=----WebKitFormBoundaryIfFsBFmd4wKwZg49`                         |
+| **Response Content-Type**  | `application/json`                                                                            |
+| **Authorization**          | `<redacted>` (Present)                                                                        |
+| **Origin**                 | `https://demo.zerotrusted.ai`                                                                 |
+| **Payload**                | `multipart/form-data`                                                                         |
+| **Response**               | `200 OK` (Successful, JSON data returned)                                                     |
+
+### Sample Payload
+
+```plaintext
+pii_entities: first name, last name, ssn (social security number), credit card number, cvv, bank account number, email, phone number, driving license number, passport number, address
 prompt:  Generate SQL insert command using the following details: Cardholder Name: Alex Johnson Card Number: 1234 5678 9012 3456 Expiry Date: 12/24 CVV: 123 Transaction Amount: $200 Merchant Name: Tech Gadgets Online Store
 anonymize_keywords: Alex
 keyword_safeguard: beartest,bear
@@ -47,10 +90,12 @@ uploaded_file:
 client_api_key: ApmIQgrYH1SFTX1+WoIBR9I+0ojujfIXIU95tlbZaXSgqld5qzx14ZqdtlV3dDIs056eEeVAsPnHS7Mgb+ObHVX8VtrtfQ7GnRTsHkUxM9yckrb2iCBYWwW64WhjOgJaQIhenZVTHDsOcmGZvRgqCIjRMeEgV/wYGP3yRT+ztmNXQAmHdaX36CeE7dX7vkHh7ftdSsVOAkyJTwGeKqkZhUf/NY6ga+gjHeDjXbCOFq8=
 llm: gpt-4-turbo
 do_not_anonymize_keywords: happy kid,,1234 5678 9012 3456,12/24,General Hospital
-is_api_key_encrypted: true`
-
-## Sample Response:
+is_api_key_encrypted: true
 ```
+
+### Sample Response
+
+```json
 {
     "success": true,
     "data": {
@@ -100,117 +145,128 @@ is_api_key_encrypted: true`
     "error_message": ""
 }
 ```
------------------------------------------------------------------------------------------------------------------------------
 
-## Network Request: `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-llm-response`
+---
 
-**Purpose:** This API request fetches a response from a Large Language Model (LLM).
+## 2. Get LLM Response
 
-**Request Details:**
-*   **URL:** `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-llm-response`
-*   **Method:** `<redacted>` (POST).
-*    **Headers:**
-    *   `accept: application/json, text/plain, */*`: Accepts JSON, plain text, or any content type.
-    *   `accept-encoding: gzip, deflate, br, zstd`: Supports compressed responses using gzip, deflate, br, or zstd algorithms.
-    *   `authorization: <redacted>`: Authentication token is present.
-    *   `content-type: multipart/form-data; boundary=----WebKitFormBoundary2dlUoorxjFxNyVVD`:Form data.
-    *   `origin: https://demo.zerotrusted.ai`: The request originated from this domain.
+**Endpoint:**  
+`https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-llm-response`
 
-*   **Response Details:**
-    *   **Status Code:** `200 OK`.
-    *   **Headers:**
-        *   `access-control-allow-credentials: true`: Allows credentials in cross-origin requests.
-        *   `access-control-allow-origin: https://demo.zerotrusted.ai`: Allows cross-origin requests from this origin.
-        *   `content-type: text/plain; charset=utf-8`: Response is plain text.
-    *   **server**: `zta`
+**Purpose:**  
+Fetches a response from a Large Language Model (LLM) based on the provided prompt and parameters.
 
+### Request Details
 
-## API Request Summary: 
+- **URL:**  
+  `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-llm-response`
+  
+- **Method:**  
+  `<redacted>` (POST)
+  
+- **Headers:**
+  - `accept: application/json, text/plain, */*`
+  - `accept-encoding: gzip, deflate, br, zstd`
+  - `authorization: <redacted>`
+  - `content-type: multipart/form-data; boundary=----WebKitFormBoundary2dlUoorxjFxNyVVD`
+  - `origin: https://demo.zerotrusted.ai`
+  
+- **Request Content-Type:**  
+  `multipart/form-data`
 
-| Field                 | Value                                                                    |
-| --------------------- | ------------------------------------------------------------------------ |
-| **URL**               | `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-llm-response`        |
-| **Method**            | `<redacted>` (POST)                                                  |
-| **Request Content-Type** | `multipart/form-data; boundary=----WebKitFormBoundaryBRdbRdL1d9mxRiJi` |
-| **Response Content-Type**| `text/plain; charset=utf-8`                                             |
-| **Authorization**     | `<redacted>` (Present)                                                  |
-| **Origin**            | `https://demo.zerotrusted.ai`                                            |
-| **Payload**           | `multipart/form-data`                          |
-| **Response**          | `200 OK` (Successful, Plain text returned)                                |
------------------------------------------------------------------------------------------------
+- **Response Content-Type:**  
+  `text/plain; charset=utf-8`
 
-## Sample Payload:
-`llm: cohere
+### API Request Summary
+
+| Field                      | Value                                                                                         |
+| -------------------------- | --------------------------------------------------------------------------------------------- |
+| **URL**                    | `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-llm-response`                              |
+| **Method**                 | `<redacted>` (POST)                                                                           |
+| **Request Content-Type**   | `multipart/form-data; boundary=----WebKitFormBoundary2dlUoorxjFxNyVVD`                         |
+| **Response Content-Type**  | `text/plain; charset=utf-8`                                                                    |
+| **Authorization**          | `<redacted>` (Present)                                                                        |
+| **Origin**                 | `https://demo.zerotrusted.ai`                                                                 |
+| **Payload**                | `multipart/form-data`                                                                         |
+| **Response**               | `200 OK` (Successful, Plain text returned)                                                    |
+
+### Sample Payload
+
+```plaintext
+llm: cohere
 prompt:  Generate SQL insert command using the following details: Cardholder Name: Brian Thompson Card Number: 1234 5678 9012 3456 Expiry Date: 12/24 CVV: 981 Transaction Amount: $200 Merchant Name: Tech Gadgets Online Store
 file_pii_array: []
 client_api_key: p1XHsoteATOrW+jJms6x/t9BXO0L8uiW6nyZOUNzV0u7gROmSaGSycYBn/1mUOBu
 fallback_llm: true
 conversation_id: 1742571573091
 uploaded_file: 
-is_api_key_encrypted: true`
+is_api_key_encrypted: true
+```
 
-## Sample Response:
-`Here is the SQL `INSERT` command based on the provided details, adhering to the instructions:
+### Sample Response
+
+```plaintext
+Here is the SQL `INSERT` command based on the provided details, adhering to the instructions:
 
 ```sql
 INSERT INTO transactions (Cardholder_Name, Card_Number, Expiry_Date, CVV, Transaction_Amount, Merchant_Name)
 VALUES ('Brian Thompson', '1234 5678 9012 3456', '12/24', '981', '$200', 'Tech Gadgets Online Store');
 ```
 
-**Note:** Ensure the table `transactions` and its columns (`Cardholder_Name`, `Card_Number`, `Expiry_Date`, `CVV`, `Transaction_Amount`, `Merchant_Name`) exist in your database with the appropriate data types. If `Transaction_Amount` is stored as a numeric value without the `$` symbol, you should adjust the value accordingly, but since the instructions specify preserving the exact format, the `$` is included here.`
-
------------------------------------------------------------------------------------------------------------------------------------------------
-## Network Request: `https://demo-agents.zerotrusted.ai/zt-ml/api/v2/zt-llm-report-llms/V2`
-
-**Purpose:**
-This API request is related to retrieving a report on Large Language Models (LLMs), specifically under a "zt-llm" service, using version 2 of the API.
-
-**Request Details:**
-
-*   **URL:** `https://demo-agents.zerotrusted.ai/zt-ml/api/v2/zt-llm-report-llms/V2`
-*   **Method:** `<redacted>` (POST)
-*   **Headers:**
-    *   `accept: application/json, text/plain, */*`: The client prefers JSON but can accept plain text or any other format.
-    *   `accept-encoding: gzip, deflate, br, zstd`: The client supports various compression methods.
-    *   `accept-language: en-US,en;q=0.9,hi;q=0.8`: Client's language preferences.
-    *   `authorization: <redacted>`: Authentication token.
-    *   `content-length: <redacted>`: Size of the request body.
-    *   `content-type: application/json`: The request body is in JSON format.
-    *   `origin: https://demo.zerotrusted.ai`: The request's origin.
-    *   `referer: https://demo.zerotrusted.ai/`: The referring page.
-    *   `user-agent: Mozilla/5.0 ... Chrome/134.0.0.0`: The browser and version used.
-
-**Response Details:**
-
-*   **Status Code:** `200 OK`.
-*   **Headers:**
-    *   `access-control-allow-credentials: true`: Credentials are allowed in cross-origin requests.
-    *   `access-control-allow-origin: https://demo.zerotrusted.ai`: Cross-origin requests from this origin are allowed.
-    *   `content-length: <redacted>`: Size of the response body.
-    *   `content-type: application/json`: The response is in JSON format.
-    *   `date: Fri, 21 Mar 2025 20:25:45 GMT`: The response timestamp.
-    *   `server: zta`: The server software.
-    *   `strict-transport-security: max-age=31536000; includeSubDomains; preload`: HSTS policy is enabled.
-    *   `vary: Origin`: The response may vary based on the `Origin`.
-    *   `x-content-type-options: nosniff`: Prevents MIME sniffing.
-
-## API Request Summary:
-
-| Field                 | Value                                                              |
-| --------------------- | ------------------------------------------------------------------ |
-| **URL**               | `https://demo-agents.zerotrusted.ai/zt-ml/api/v2/zt-llm-report-llms/V2` |
-| **Method**            | `<redacted>` (Likely POST or GET)                                  |
-| **Request Content-Type** | `application/json`                                              |
-| **Response Content-Type**| `application/json`                                              |
-| **Authorization**     | `<redacted>` (Present)                                             |
-| **Origin**            | `https://demo.zerotrusted.ai`                                      |
-| **Payload**           | `application/json`                                                 |
-| **Response**          | `200 OK` (Successful, JSON data returned)                          |
-
-
-## Sample PayLoad:
+**Note:** Ensure the table `transactions` and its columns (`Cardholder_Name`, `Card_Number`, `Expiry_Date`, `CVV`, `Transaction_Amount`, `Merchant_Name`) exist in your database with the appropriate data types. If `Transaction_Amount` is stored as a numeric value without the `$` symbol, you should adjust the value accordingly.
 ```
-'{
+
+---
+
+## 3. LLM Report (V2)
+
+**Endpoint:**  
+`https://demo-agents.zerotrusted.ai/zt-ml/api/v2/zt-llm-report-llms/V2`
+
+**Purpose:**  
+Retrieves a report on Large Language Models (LLMs) with details such as rank, score, and explanations for responses. This version (V2) pertains specifically to the "zt-llm" service.
+
+### Request Details
+
+- **URL:**  
+  `https://demo-agents.zerotrusted.ai/zt-ml/api/v2/zt-llm-report-llms/V2`
+  
+- **Method:**  
+  `<redacted>` (POST)
+  
+- **Headers:**
+  - `accept: application/json, text/plain, */*`
+  - `accept-encoding: gzip, deflate, br, zstd`
+  - `accept-language: en-US,en;q=0.9,hi;q=0.8`
+  - `authorization: <redacted>`
+  - `content-type: application/json`
+  - `origin: https://demo.zerotrusted.ai`
+  - `referer: https://demo.zerotrusted.ai/`
+  - `user-agent: Mozilla/5.0 ... Chrome/134.0.0.0`
+
+- **Request Content-Type:**  
+  `application/json`
+
+- **Response Content-Type:**  
+  `application/json`
+
+### API Request Summary
+
+| Field                      | Value                                                                                         |
+| -------------------------- | --------------------------------------------------------------------------------------------- |
+| **URL**                    | `https://demo-agents.zerotrusted.ai/zt-ml/api/v2/zt-llm-report-llms/V2`                         |
+| **Method**                 | `<redacted>` (POST)                                                                           |
+| **Request Content-Type**   | `application/json`                                                                            |
+| **Response Content-Type**  | `application/json`                                                                            |
+| **Authorization**          | `<redacted>` (Present)                                                                        |
+| **Origin**                 | `https://demo.zerotrusted.ai`                                                                 |
+| **Payload**                | `application/json`                                                                            |
+| **Response**               | `200 OK` (Successful, JSON data returned)                                                     |
+
+### Sample Payload
+
+```json
+{
     "prompt": " Generate SQL insert command using the following details: Cardholder Name: Alex Johnson Card Number: 1234 5678 9012 3456 Expiry Date: 12/24 CVV: 123 Transaction Amount: $200 Merchant Name: Tech Gadgets Online Store",
     "LLM": "mixtral-8x7b-32768",
     "privacy_level": 3,
@@ -225,10 +281,13 @@ This API request is related to retrieving a report on Large Language Models (LLM
     "user_location_detail": "{\"ip\":\"223.233.86.127\",\"hostname\":\"abts-north-dynamic-127.86.233.223.airtelbroadband.in\",\"city\":\"Pune\",\"region\":\"Maharashtra\",\"country\":\"IN\",\"loc\":\"18.5196,73.8554\",\"org\":\"AS24560 Bharti Airtel Ltd., Telemedia Services\",\"postal\":\"411001\",\"timezone\":\"Asia/Kolkata\"}",
     "browser_detail": "{\"appName\":\"Netscape\",\"appVersion\":\"5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36\",\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36\",\"platform\":\"Win32\"}",
     "device_type": "Desktop"
-}'
+}
+```
 
-## Sample Response:
-'{
+### Sample Response
+
+```json
+{
     "anonymizedPrompt": " Generate SQL insert command using the following details: Cardholder Name: <ztanonym> Barnes Group </ztanonym> Johnson Card Number: 1234 5678 9012 3456 Expiry Date: 12/24 CVV: 123 Transaction Amount: $200 Merchant Name: Tech Gadgets Online Store",
     "highlightedPrompt": " Generate SQL insert command using the following details: Cardholder Name: <privacytext> Alex </privacytext> Johnson Card Number: 1234 5678 9012 3456 Expiry Date: 12/24 CVV: 123 Transaction Amount: $200 Merchant Name: Tech Gadgets Online Store",
     "anonymizedFlag": true,
@@ -241,60 +300,59 @@ This API request is related to retrieving a report on Large Language Models (LLM
             "Barnes Group"
         ]
     ]
-}'
+}
 ```
 
-------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
-## Network Request: `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-reliability-scores?service=openai`
+## 4. Get Reliability Scores
 
-**Purpose:**
-This API request is designed to fetch reliability scores for a specific service, in this case, "openai." Provides reliability metrics related to machine learning or language model services.
+**Endpoint:**  
+`https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-reliability-scores?service=openai`
 
-**Request Details:**
+**Purpose:**  
+Fetches reliability scores for a specified service (here, "openai"). It returns reliability metrics and evaluations for responses provided by different LLMs.
 
-*   **URL:** `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-reliability-scores?service=openai`
-*   **Method:** `<redacted>` (POST)
-*   **Headers:**
-    *   `accept: application/json`: The client expects a JSON response.
-    *   `accept-encoding: gzip, deflate, br, zstd`: The client can handle compressed responses.
-    *   `accept-language: en-US,en;q=0.9,hi;q=0.8`: The client's language preferences.
-    *   `authorization: <redacted>`: An authorization token is present.
-    *   `content-length: <redacted>`: The length of the request body.
-    *   `content-type: application/json`: The request body is in JSON format.
-    *   `origin: https://demo.zerotrusted.ai`: The request originated from this domain.
-    *   `referer: https://demo.zerotrusted.ai/`: The referring URL.
-    *   `user-agent: Mozilla/5.0 ... Chrome/134.0.0.0`: The client's browser and version.
+### Request Details
 
-**Response Details:**
+- **URL:**  
+  `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-reliability-scores?service=openai`
+  
+- **Method:**  
+  `<redacted>` (POST)
+  
+- **Headers:**
+  - `accept: application/json`
+  - `accept-encoding: gzip, deflate, br, zstd`
+  - `accept-language: en-US,en;q=0.9,hi;q=0.8`
+  - `authorization: <redacted>`
+  - `content-type: application/json`
+  - `origin: https://demo.zerotrusted.ai`
+  - `referer: https://demo.zerotrusted.ai/`
+  - `user-agent: Mozilla/5.0 ... Chrome/134.0.0.0`
 
-*   **Status Code:** `200 OK`.
-*   **Headers:**
-    *   `access-control-allow-credentials: true`: Allows credentials in cross-origin requests.
-    *   `access-control-allow-origin: https://demo.zerotrusted.ai`: Permits cross-origin requests from this origin.
-    *   `content-length: <redacted>`: The size of the response body.
-    *   `content-type: application/json`: The response is in JSON format.
-    *   `date: Fri, 21 Mar 2025 20:25:52 GMT`: The response timestamp.
-    *   `server: zta`: The server software.
-    *   `strict-transport-security: max-age=31536000; includeSubDomains; preload`: HSTS is enabled.
-    *   `vary: Origin`: The response might vary based on the `Origin` header.
-    *   `x-content-type-options: nosniff`: Prevents MIME sniffing.
+- **Request Content-Type:**  
+  `application/json`
 
-## API Request Summary:
+- **Response Content-Type:**  
+  `application/json`
 
-| Field                 | Value                                                          |
-| --------------------- | -------------------------------------------------------------- |
-| **URL**               | `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-reliability-scores?service=openai` |
-| **Method**            | `<redacted>` (POST)                                       |
-| **Request Content-Type** | `application/json`                                          |
-| **Response Content-Type**| `application/json`                                          |
-| **Authorization**     | `<redacted>` (Present)                                        |
-| **Origin**            | `https://demo.zerotrusted.ai`                                 |
-| **Payload**           | `application/json`                      |
-| **Response**          | `200 OK` (Successful, JSON data returned)                      |
+### API Request Summary
 
-## Sample PayLoad:
-```
+| Field                      | Value                                                                                         |
+| -------------------------- | --------------------------------------------------------------------------------------------- |
+| **URL**                    | `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-reliability-scores?service=openai`         |
+| **Method**                 | `<redacted>` (POST)                                                                           |
+| **Request Content-Type**   | `application/json`                                                                            |
+| **Response Content-Type**  | `application/json`                                                                            |
+| **Authorization**          | `<redacted>` (Present)                                                                        |
+| **Origin**                 | `https://demo.zerotrusted.ai`                                                                 |
+| **Payload**                | `application/json`                                                                            |
+| **Response**               | `200 OK` (Successful, JSON data returned)                                                     |
+
+### Sample Payload
+
+```json
 {
     "client_api_key": "ApmIQgrYH1SFTX1+WoIBR9I+0ojujfIXIU95tlbZaXSgqld5qzx14ZqdtlV3dDIs056eEeVAsPnHS7Mgb+ObHVX8VtrtfQ7GnRTsHkUxM9yckrb2iCBYWwW64WhjOgJaQIhenZVTHDsOcmGZvRgqCIjRMeEgV/wYGP3yRT+ztmNXQAmHdaX36CeE7dX7vkHh7ftdSsVOAkyJTwGeKqkZhUf/NY6ga+gjHeDjXbCOFq8=",
     "llm": "gpt-3.5-turbo",
@@ -305,7 +363,7 @@ This API request is designed to fetch reliability scores for a specific service,
         },
         {
             "name": "cohere",
-            "response": "Here is the SQL `INSERT` command based on the provided details, adhering to the instructions:\n\n```sql\nINSERT INTO transactions (Cardholder_Name, Card_Number, Expiry_Date, CVV, Transaction_Amount, Merchant_Name)\nVALUES ('Brian Thompson', '1234 5678 9012 3456', '12/24', '981', '$200', 'Tech Gadgets Online Store');\n```\n\n**Note:** Ensure the table `transactions` and its columns (`Cardholder_Name`, `Card_Number`, `Expiry_Date`, `CVV`, `Transaction_Amount`, `Merchant_Name`) exist in your database with the appropriate data types. If `Transaction_Amount` is stored as a numeric value without the `$` symbol, you should adjust the value accordingly, but since the instructions specify preserving the exact format, the `$` is included here."
+            "response": "Here is the SQL `INSERT` command based on the provided details, adhering to the instructions:\n\n```sql\nINSERT INTO transactions (Cardholder_Name, Card_Number, Expiry_Date, CVV, Transaction_Amount, Merchant_Name)\nVALUES ('Brian Thompson', '1234 5678 9012 3456', '12/24', '981', '$200', 'Tech Gadgets Online Store');\n```\n\n**Note:** Ensure the table `transactions` and its columns (`Cardholder_Name`, `Card_Number`, `Expiry_Date`, `CVV`, `Transaction_Amount`, `Merchant_Name`) exist in your database with the appropriate data types. If `Transaction_Amount` is stored as a numeric value without the `$` symbol, you should adjust the value accordingly."
         },
         {
             "name": "gpt-4",
@@ -316,68 +374,68 @@ This API request is designed to fetch reliability scores for a specific service,
     "is_api_key_encrypted": true
 }
 ```
-## Sample Response:
-```
+
+### Sample Response
+
+```json
 {
     "success": true,
     "data": "{\n  \"mixtral-8x7b-32768\": {\n            \"rank\": \"3\",\n            \"score\": \"1\",\n            \"explanation\": \"The response is invalid as it does not provide the SQL insert command requested in the prompt.\"\n        },\n\"cohere\": {\n            \"rank\": \"1\",\n            \"score\": \"99\",\n            \"explanation\": \"The response is highly relevant, providing the correct SQL insert command with additional notes for execution.\"\n        },\n\"gpt-4\": {\n            \"rank\": \"2\",\n            \"score\": \"98\",\n            \"explanation\": \"The response is accurate, offering the SQL insert command as requested with a reminder to verify table structure.\"\n        },\n  \"Task_Identification\": [\"Text Generation\"],\n  \"Prompt_Engineering_Method\": [\"Zero Shot\"],\n  \"Sentiment_Analysis\": [],\n  \"Semantic_Novelty_Measurement\": []\n}",
     "error_message": ""
 }
 ```
-------------------------------------------------------------------------------------------------------------------------------------------------
 
+---
 
-## Network Request Analysis: `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-compliance-reports-v2`
+## 5. Get Compliance Reports V2
 
-**Purpose:**
+**Endpoint:**  
+`https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-compliance-reports-v2`
 
-This API request is to retrieve compliance reports. The presence of "v2" in the path suggests it's the second version of this endpoint. 
+**Purpose:**  
+Retrieves detailed compliance reports for provided data elements and PII. The response includes violation scores and associated compliance texts.
 
-**Request Details:**
+### Request Details
 
-*   **URL:** `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-compliance-reports-v2`
-*   **Method:** `<redacted>` (POST)
-*   **Headers:**
-    *   `accept: application/json`: The client expects a JSON response.
-    *   `accept-encoding: gzip, deflate, br, zstd`: The client can handle compressed responses.
-    *   `accept-language: en-US,en;q=0.9,hi;q=0.8`: Client's language preferences.
-    *   `authorization: <redacted>`: Authentication token.
-    *   `content-length: <redacted>`: Size of the request body.
-    *   `content-type: application/json`: The request body is in JSON format.
-    *   `origin: https://demo.zerotrusted.ai`: The request's origin.
-    *   `referer: https://demo.zerotrusted.ai/`: The referring page.
-    *   `user-agent: Mozilla/5.0 ... Chrome/134.0.0.0`: The client's browser and version.
+- **URL:**  
+  `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-compliance-reports-v2`
+  
+- **Method:**  
+  `<redacted>` (POST)
+  
+- **Headers:**
+  - `accept: application/json`
+  - `accept-encoding: gzip, deflate, br, zstd`
+  - `accept-language: en-US,en;q=0.9,hi;q=0.8`
+  - `authorization: <redacted>`
+  - `content-type: application/json`
+  - `origin: https://demo.zerotrusted.ai`
+  - `referer: https://demo.zerotrusted.ai/`
+  - `user-agent: Mozilla/5.0 ... Chrome/134.0.0.0`
 
-**Response Details:**
+- **Request Content-Type:**  
+  `application/json`
 
-*   **Status Code:** `200 OK`.
-*   **Headers:**
-    *   `access-control-allow-credentials: true`: Allows credentials in cross-origin requests.
-    *   `access-control-allow-origin: https://demo.zerotrusted.ai`: Allows cross-origin requests from this origin.
-    *   `content-length: <redacted>`: The size of the response body.
-    *   `content-type: application/json`: The response is in JSON format.
-    *   `date: Fri, 21 Mar 2025 21:07:41 GMT`: The response timestamp.
-    *   `server: zta`: The server software.
-    *   `strict-transport-security: max-age=31536000; includeSubDomains; preload`: HSTS policy is enabled.
-    *   `vary: Origin`: The response may vary based on the `Origin`.
-    *   `x-content-type-options: nosniff`: Prevents MIME sniffing.
+- **Response Content-Type:**  
+  `application/json`
 
-## API Request Summary:
+### API Request Summary
 
-| Field                 | Value                                                              |
-| --------------------- | ------------------------------------------------------------------ |
-| **URL**               | `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-compliance-reports-v2` |
-| **Method**            | `<redacted>` (POST)                                                |
-| **Request Content-Type** | `application/json`                                              |
-| **Response Content-Type**| `application/json`                                              |
-| **Authorization**     | `<redacted>` (Present)                                             |
-| **Origin**            | `https://demo.zerotrusted.ai`                                      |
-| **Payload**           | `application/json`                                                 |
-| **Response**          | `200 OK` (Successful, JSON data returned)                          |
+| Field                      | Value                                                                                         |
+| -------------------------- | --------------------------------------------------------------------------------------------- |
+| **URL**                    | `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-compliance-reports-v2`                     |
+| **Method**                 | `<redacted>` (POST)                                                                           |
+| **Request Content-Type**   | `application/json`                                                                            |
+| **Response Content-Type**  | `application/json`                                                                            |
+| **Authorization**          | `<redacted>` (Present)                                                                        |
+| **Origin**                 | `https://demo.zerotrusted.ai`                                                                 |
+| **Payload**                | `application/json`                                                                            |
+| **Response**               | `200 OK` (Successful, JSON data returned)                                                     |
 
-## Sample PayLoad:
-```
-'{
+### Sample Payload
+
+```json
+{
     "compliance_array": [
         "ccpa",
         "hipaa",
@@ -413,11 +471,13 @@ This API request is to retrieve compliance reports. The presence of "v2" in the 
     ],
     "is_api_key_encrypted": true,
     "file_name": ""
-}'
+}
 ```
-## Sample Response:
-```
-'{
+
+### Sample Response
+
+```json
+{
     "success": true,
     "data": {
         "compliance_violation": 11.428571428571429,
@@ -549,5 +609,13 @@ This API request is to retrieve compliance reports. The presence of "v2" in the 
         ]
     },
     "error_message": ""
-}'
+}
 ```
+
+---
+
+## Revision History
+
+- **Version 1.0** – Initial documentation based on the provided markdown.
+
+---
