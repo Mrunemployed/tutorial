@@ -1,4 +1,4 @@
-## Network Request: `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-anonymize-prompt`
+## Get Anonymize Prompt: `https://demo-agents.zerotrusted.ai/zt-ml/api/v1/get-anonymize-prompt`
 
 **Purpose:** API call to get an anonymization prompt.
 
